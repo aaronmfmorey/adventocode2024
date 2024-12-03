@@ -1,35 +1,34 @@
 f = open("day1_input.txt")
 
-a = [] 
-b = []
+leftColumn = [] 
+rightColumn = []
 
-for x in f:
-    line = x.split()
-    a.append(int(line[0]))
-    b.append(int(line[1]))
+for line in f:
+    line = line.split()
+    leftColumn.append(int(line[0]))
+    rightColumn.append(int(line[1]))
 
-a.sort()
-b.sort()
+leftColumn.sort()
+rightColumn.sort()
 
 total = 0
-for i in range(0, len(a)):
-    total += abs(a[i] - b[i])
+for i in range(0, len(leftColumn)):
+    total += abs(leftColumn[i] - rightColumn[i])
 
 print(total)
 
-bCounts = dict()
-for bi in b:
-    if bi in bCounts:
-        bCounts[bi] = bCounts[bi] + 1
+rightCounts = dict()
+for rc in rightColumn:
+    if rc in rightCounts:
+        rightCounts[rc] = rightCounts[rc] + 1
     else:
-        bCounts[bi] = 1
+        rightCounts[rc] = 1
 
 similarity = 0
-for ai in a:
-    aiCount = bCounts.get(ai)
-    if aiCount == None:
-        aiCount = 0
-    sim = ai * aiCount
-    similarity += sim
+for lc in leftColumn:
+    lcCount = rightCounts.get(lc)
+    if lcCount == None:
+        lcCount = 0
+    similarity += lc * lcCount
 
 print(similarity)
