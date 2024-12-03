@@ -13,8 +13,6 @@ b.sort()
 
 total = 0
 for i in range(0, len(a)):
-    diff = abs(a[i] - b[i])
-    print("Abs diff %s - %s = %s" % (a[i], b[i], diff))
     total += abs(a[i] - b[i])
 
 print(total)
